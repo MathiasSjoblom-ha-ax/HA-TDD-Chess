@@ -1,5 +1,6 @@
 package ax.ha.tdd.chess.engine;
 
+import ax.ha.tdd.chess.engine.pieces.ChessPiece;
 import ax.ha.tdd.chess.engine.pieces.King;
 import ax.ha.tdd.chess.engine.pieces.PieceType;
 import org.junit.jupiter.api.Test;
@@ -31,11 +32,14 @@ public class KingTest {
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new King(PieceType.KING, Player.WHITE, testCoords).canMove(board, testCoords2));
 
-        String moveFrom2 = "d4";
         String moveTo2= "f4";
-        Coordinates testCoords1 = new Coordinates(moveFrom2);
         Coordinates testCoords22 = new Coordinates(moveTo2);
-        assertEquals(false, new King(PieceType.KING, Player.WHITE, testCoords1).canMove(board, testCoords22));
+        assertEquals(false, new King(PieceType.KING, Player.WHITE, testCoords).canMove(board, testCoords22));
+
+
+        ChessPiece testPiece = new King(PieceType.KNIGHT, Player.BLACK, testCoords2);
+        board.addPiece(testPiece);
+        assertEquals(false, new King(PieceType.KING, Player.BLACK, testCoords).canMove(board, testCoords2));
     }
 
 }

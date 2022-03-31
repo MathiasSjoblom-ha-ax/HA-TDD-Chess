@@ -26,7 +26,7 @@ public class King extends ChessPiece{
         }
 
         ChessPiece pieceCheck = chessboard.getPiece(destination);
-        if(pieceCheck != null && pieceCheck.getPlayer() == this.player) {
+        if(pieceCheck != null && pieceCheck.getPlayer().getSymbol() == this.player.getSymbol()) {
             return notMoveable;
         }
 
