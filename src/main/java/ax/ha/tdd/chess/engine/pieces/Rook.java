@@ -43,6 +43,7 @@ public class Rook extends ChessPiece{
                     moveable = true;
                 } else {
                     moveable = false;
+                    break;
                 }
             }
         }
@@ -53,6 +54,7 @@ public class Rook extends ChessPiece{
                     moveable = true;
                 } else {
                     moveable = false;
+                    break;
                 }
             }
         }
@@ -63,6 +65,7 @@ public class Rook extends ChessPiece{
                     moveable = true;
                 } else {
                     moveable = false;
+                    break;
                 }
             }
         }
@@ -73,6 +76,7 @@ public class Rook extends ChessPiece{
                     moveable = true;
                 } else {
                     moveable = false;
+                    break;
                 }
             }
         }
