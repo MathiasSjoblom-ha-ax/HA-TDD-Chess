@@ -15,4 +15,13 @@ public class PawnTest {
         Coordinates testCoords = new Coordinates(moveFrom);
         assertEquals("WHITE Pawn", new Pawn(PieceType.PAWN, Player.WHITE, testCoords));
     }
+
+    @Test
+    public void testPawnSymbol() {
+        String moveFrom = "d5";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        assertEquals("PAWN", new Pawn(PieceType.PAWN, Player.WHITE, testCoords).getSymbol());
+    }
+
+
 }
