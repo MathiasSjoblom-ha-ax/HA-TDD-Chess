@@ -11,14 +11,14 @@ public class KingTest {
 
     @Test
     public void testKing() {
-        String moveFrom = "d5-d6";
+        String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
         assertEquals("WHITE King", new King(PieceType.KING, Player.WHITE, testCoords));
     }
 
     @Test
     public void testKingSymbol() {
-        String moveFrom = "d5-d6";
+        String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
         assertEquals("KING", new King(PieceType.KING, Player.WHITE, testCoords).getSymbol());
     }
