@@ -16,4 +16,11 @@ public class KnightTest {
         assertEquals("WHITE Knight", new Knight(PieceType.KNIGHT, Player.WHITE, testCoords));
     }
 
+    @Test
+    public void testKnightSymbol() {
+        String moveFrom = "d5";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        assertEquals("KNIGHT", new Knight(PieceType.KNIGHT, Player.WHITE, testCoords).getSymbol());
+    }
+
 }
