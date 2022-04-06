@@ -55,7 +55,6 @@ public class Pawn extends ChessPiece{
             return notMoveable;
         }
 
-        // Check relevant moves if the pawn in black.
         else  {
             if(destX == x && destY == (y - 1) && chessboard.getPiece(destination) == null) {
                 return moveable;

@@ -13,7 +13,7 @@ public class KnightTest {
     public void testKnight() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("WHITE Knight", new Knight(PieceType.KNIGHT, Player.WHITE, testCoords));
+        assertEquals("WHITE Knight", new Knight(PieceType.KNIGHT, Player.WHITE, testCoords).toString());
     }
 
     @Test

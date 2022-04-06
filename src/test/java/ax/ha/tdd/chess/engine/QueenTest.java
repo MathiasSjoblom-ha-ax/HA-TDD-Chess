@@ -14,14 +14,14 @@ public class QueenTest {
     public void testQueen() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("WHITE Rook", new Queen(PieceType.QUEEN, Player.WHITE, testCoords));
+        assertEquals("WHITE Queen", new Queen(PieceType.QUEEN, Player.WHITE, testCoords).toString());
     }
 
     @Test
     public void testRookSymbol() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("ROOK", new Queen(PieceType.QUEEN, Player.WHITE, testCoords).getSymbol());
+        assertEquals("QUEEN", new Queen(PieceType.QUEEN, Player.WHITE, testCoords).getSymbol());
     }
 
     @Test

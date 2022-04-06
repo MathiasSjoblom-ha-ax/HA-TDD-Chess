@@ -1,0 +1,10 @@
+ax\ha\tdd\chess\engine\KingTest.class
+ax\ha\tdd\chess\web\ChessApplicationTests.class
+ax\ha\tdd\chess\engine\GameTest.class
+ax\ha\tdd\chess\engine\QueenTest.class
+ax\ha\tdd\chess\console\ChessboardWriterTest.class
+ax\ha\tdd\chess\engine\ChessboardTest.class
+ax\ha\tdd\chess\engine\PawnTest.class
+ax\ha\tdd\chess\engine\CoordinatesTest.class
+ax\ha\tdd\chess\engine\KnightTest.class
+ax\ha\tdd\chess\engine\RookTest.class

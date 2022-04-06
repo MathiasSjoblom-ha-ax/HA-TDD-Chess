@@ -11,7 +11,7 @@ public class PawnTest {
     public void testPawn() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("WHITE Pawn", new Pawn(PieceType.PAWN, Player.WHITE, testCoords));
+        assertEquals("WHITE Pawn", new Pawn(PieceType.PAWN, Player.WHITE, testCoords).toString());
     }
 
     @Test

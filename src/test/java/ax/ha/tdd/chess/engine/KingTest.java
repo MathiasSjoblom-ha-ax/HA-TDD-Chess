@@ -13,7 +13,7 @@ public class KingTest {
     public void testKing() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("WHITE King", new King(PieceType.KING, Player.WHITE, testCoords));
+        assertEquals("WHITE King", new King(PieceType.KING, Player.WHITE, testCoords).toString());
     }
 
     @Test

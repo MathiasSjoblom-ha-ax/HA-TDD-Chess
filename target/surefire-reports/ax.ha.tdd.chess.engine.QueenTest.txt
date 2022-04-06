@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: ax.ha.tdd.chess.engine.QueenTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in ax.ha.tdd.chess.engine.QueenTest
+testRookSymbol  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <ROOK> but was: <QUEEN>
+	at ax.ha.tdd.chess.engine.QueenTest.testRookSymbol(QueenTest.java:24)
+
+testQueen  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <WHITE Rook> but was: <WHITE Queen>
+	at ax.ha.tdd.chess.engine.QueenTest.testQueen(QueenTest.java:17)
+

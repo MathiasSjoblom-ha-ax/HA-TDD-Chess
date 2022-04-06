@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ax.ha.tdd.chess.engine.KingTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in ax.ha.tdd.chess.engine.KingTest
+testKing  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: java.lang.String@7714e963<WHITE King> but was: ax.ha.tdd.chess.engine.pieces.King@20ce78ec<WHITE King>
+	at ax.ha.tdd.chess.engine.KingTest.testKing(KingTest.java:16)
+

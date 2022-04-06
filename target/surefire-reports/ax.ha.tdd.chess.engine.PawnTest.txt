@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ax.ha.tdd.chess.engine.PawnTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in ax.ha.tdd.chess.engine.PawnTest
+testPawn  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: java.lang.String@1ab3a8c8<WHITE Pawn> but was: ax.ha.tdd.chess.engine.pieces.Pawn@43195e57<WHITE Pawn>
+	at ax.ha.tdd.chess.engine.PawnTest.testPawn(PawnTest.java:14)
+

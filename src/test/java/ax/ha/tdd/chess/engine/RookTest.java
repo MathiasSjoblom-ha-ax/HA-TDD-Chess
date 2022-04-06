@@ -13,7 +13,7 @@ public class RookTest {
     public void testRook() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
-        assertEquals("WHITE Rook", new Rook(PieceType.ROOK, Player.WHITE, testCoords));
+        assertEquals("WHITE Rook", new Rook(PieceType.ROOK, Player.WHITE, testCoords).toString());
     }
 
     @Test

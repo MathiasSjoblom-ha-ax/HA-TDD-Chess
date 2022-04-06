@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ax.ha.tdd.chess.engine.GameTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in ax.ha.tdd.chess.engine.GameTest
+gameTestMove  Time elapsed: 0 s  <<< ERROR!
+java.lang.UnsupportedOperationException: canMove has/will not be implemented in stub class
+	at ax.ha.tdd.chess.engine.GameTest.gameTestMove(GameTest.java:14)
+
