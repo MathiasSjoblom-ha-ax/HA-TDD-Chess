@@ -22,7 +22,7 @@ public class KnightTest {
     }
 
     @Test
-    public void testRookMove() {
+    public void testKnightMove() {
         Chessboard board = new Chessboard();
         String moveFrom = "a3";
         String moveTo= "b5";
