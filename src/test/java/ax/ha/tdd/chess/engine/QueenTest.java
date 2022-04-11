@@ -18,7 +18,7 @@ public class QueenTest {
     }
 
     @Test
-    public void testRookSymbol() {
+    public void testQueenSymbol() {
         String moveFrom = "d5";
         Coordinates testCoords = new Coordinates(moveFrom);
         assertEquals("QUEEN", new Queen(PieceType.QUEEN, Player.WHITE, testCoords).getSymbol());

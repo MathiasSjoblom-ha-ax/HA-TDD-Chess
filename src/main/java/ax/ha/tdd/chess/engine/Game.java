@@ -1,13 +1,12 @@
 package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.engine.pieces.ChessPiece;
-import ax.ha.tdd.chess.engine.pieces.PieceType;
 
 public class Game {
 
     Chessboard board = Chessboard.startingBoard();
     String latestMove = "";
-    String currentPlayerSymbole = "W";
+    String currentPlayerSymbol = "W";
     int round = 0;
 
     //Feel free to delete this stuff. Just for initial testing.
@@ -22,10 +21,10 @@ public class Game {
             roundCounter();
         }
         if((round % 2) == 0) {
-            currentPlayerSymbole = "W";
+            currentPlayerSymbol = "W";
             return Player.WHITE;
         } else {
-            currentPlayerSymbole = "B";
+            currentPlayerSymbol = "B";
             return Player.BLACK;
         }
     }
@@ -43,6 +42,9 @@ public class Game {
 
     public void move(String move) {
         //TODO this should trigger your move logic.
+        if(latestMove.contains(" Won!")) {
+            return;
+        }
         if(move.length() > 5) {
             throw new IllegalArgumentException("Illegal input");
         }
@@ -62,8 +64,11 @@ public class Game {
         Coordinates fromCoords = new Coordinates(moveFrom);
         Coordinates tooCoords = new Coordinates(moveTo);
         ChessPiece piece = board.getPiece(fromCoords);
-        if(piece.getPlayer().getSymbol() == currentPlayerSymbole) {
+        if(piece.getPlayer().getSymbol() == currentPlayerSymbol) {
             if(piece.canMove(board, tooCoords)) { //This if statement doesnt work
+                if(board.getPiece(tooCoords).getSymbol() == "KING") {
+                    latestMove = piece.getPlayer().getSymbol() + " Won!";
+                }
                 System.out.println(piece.getPlayer().getSymbol());
                 board.removePiece(piece);
                 piece.setLocation(tooCoords);
@@ -74,6 +79,5 @@ public class Game {
             }
         }
         isNewGame = false;
-        System.out.println("Player tried to perform move: " + move);
     }
 }
