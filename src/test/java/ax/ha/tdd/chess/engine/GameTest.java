@@ -10,9 +10,6 @@ public class GameTest {
 
     @Test
     public void gameTestMove() {
-
-        assertEquals("b1", new Game().move("a1-b1"));
-
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
                 new Game().move("2iu3b523ib5"));
         assertEquals("Illegal input", exception.getMessage());

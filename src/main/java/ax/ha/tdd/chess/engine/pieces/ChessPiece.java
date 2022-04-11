@@ -20,6 +20,10 @@ public abstract class ChessPiece {
         this.location = location;
     }
 
+    public void setLocation(Coordinates newLocation) {
+        location = newLocation;
+    }
+
     public abstract String getSymbol();
 
     public PieceType getPieceType() { return pieceType; }

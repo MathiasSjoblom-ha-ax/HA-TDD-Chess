@@ -6,21 +6,26 @@ import ax.ha.tdd.chess.engine.pieces.PieceType;
 public class Game {
 
     Chessboard board = Chessboard.startingBoard();
+    String latestMove = "";
+    String currentPlayerSymbole = "W";
+    int round = 0;
 
     //Feel free to delete this stuff. Just for initial testing.
     boolean isNewGame = true;
-    int round = -1;
 
     public int roundCounter() {
         return round = round + 1;
     }
 
     public Player getPlayerToMove() {
-        //TODO this should reflect the current state.
-        roundCounter();
+        if(latestMove.contains("Player successfully moved")) {
+            roundCounter();
+        }
         if((round % 2) == 0) {
+            currentPlayerSymbole = "W";
             return Player.WHITE;
         } else {
+            currentPlayerSymbole = "B";
             return Player.BLACK;
         }
     }
@@ -30,15 +35,13 @@ public class Game {
     }
 
     public String getLastMoveResult() {
-        //TODO this should be used to show the player what happened
-        //Illegal move, correct move, e2 moved to e4 etc.
         if (isNewGame) {
             return "Game hasn't begun";
         }
-        return "Last move was successful (default reply, change this)";
+        return latestMove;
     }
 
-    public String move(String move) {
+    public void move(String move) {
         //TODO this should trigger your move logic.
         if(move.length() > 5) {
             throw new IllegalArgumentException("Illegal input");
@@ -55,17 +58,22 @@ public class Game {
                 }
             }
         }
-        //return moveTo;
 
-        Coordinates newCoords = new Coordinates(moveFrom);
-        Coordinates newCoords2 = new Coordinates(moveTo);
-        ChessPiece piece = board.getPiece(newCoords);
-        if(piece.canMove(board, newCoords2)) {
-
+        Coordinates fromCoords = new Coordinates(moveFrom);
+        Coordinates tooCoords = new Coordinates(moveTo);
+        ChessPiece piece = board.getPiece(fromCoords);
+        if(piece.getPlayer().getSymbol() == currentPlayerSymbole) {
+            if(piece.canMove(board, tooCoords)) { //This if statement doesnt work
+                System.out.println(piece.getPlayer().getSymbol());
+                board.removePiece(piece);
+                piece.setLocation(tooCoords);
+                board.addPiece(piece);
+                latestMove = "Player successfully moved " + move;
+            } else {
+                latestMove = "Illegal move (" + move + ")";
+            }
         }
         isNewGame = false;
         System.out.println("Player tried to perform move: " + move);
-        return moveTo;
-
     }
 }
