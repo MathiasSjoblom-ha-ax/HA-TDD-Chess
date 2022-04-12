@@ -64,19 +64,21 @@ public class Game {
         Coordinates fromCoords = new Coordinates(moveFrom);
         Coordinates tooCoords = new Coordinates(moveTo);
         ChessPiece piece = board.getPiece(fromCoords);
-        if(piece.getPlayer().getSymbol() == currentPlayerSymbol) {
-            if(piece.canMove(board, tooCoords)) { //This if statement doesnt work
-                if(board.getPiece(tooCoords).getSymbol() == "KING") {
-                    latestMove = piece.getPlayer().getSymbol() + " Won!";
+        boolean moveable = piece.canMove(board, tooCoords);
+        if(piece.getPlayer().getSymbol().equals(currentPlayerSymbol)) {
+            if(moveable) {
+                if(board.getPiece(tooCoords).getSymbol().equals("KING")) {
+                    latestMove = getPlayerToMove().getSymbol() + " Won!";
                 }
+                System.out.println(moveable);
                 System.out.println(piece.getPlayer().getSymbol());
                 board.removePiece(piece);
                 piece.setLocation(tooCoords);
                 board.addPiece(piece);
                 latestMove = "Player successfully moved " + move;
-            } else {
-                latestMove = "Illegal move (" + move + ")";
             }
+        } else {
+                latestMove = "Illegal move (" + move + ")";
         }
         isNewGame = false;
     }

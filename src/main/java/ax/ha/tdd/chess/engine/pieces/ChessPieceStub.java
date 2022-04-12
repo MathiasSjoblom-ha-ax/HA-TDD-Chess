@@ -29,6 +29,6 @@ public class ChessPieceStub extends ChessPiece {
 
     @Override
     public boolean canMove(Chessboard chessboard, Coordinates destination) {
-        throw new UnsupportedOperationException("canMove has/will not be implemented in stub class");
+        return true;
     }
 }

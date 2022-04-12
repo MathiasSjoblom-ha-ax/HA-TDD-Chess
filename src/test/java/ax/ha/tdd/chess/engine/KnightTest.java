@@ -30,11 +30,27 @@ public class KnightTest {
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new Knight(PieceType.KNIGHT, Player.WHITE, testCoords).canMove(board, testCoords2));
 
+    }
+
+    @Test
+    public void testKnightIllegalMove() {
+
+        Chessboard board = new Chessboard();
+        String moveFrom = "a3";
+        Coordinates testCoords = new Coordinates(moveFrom);
+
         String moveTo2= "a5";
         Coordinates testCoords22 = new Coordinates(moveTo2);
         assertEquals(false, new Knight(PieceType.KNIGHT, Player.WHITE, testCoords).canMove(board, testCoords22));
 
-        //Try stepping on a tile with a friendly piece on
+    }
+
+    @Test
+    public void testKnightMoveOnPiece() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "a3";
+        Coordinates testCoords = new Coordinates(moveFrom);
+
         String pieceBlock= "b5";
         Coordinates blockCoords = new Coordinates(pieceBlock);
         ChessPiece testPiece = new Knight(PieceType.KNIGHT, Player.BLACK, blockCoords);

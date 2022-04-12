@@ -30,20 +30,46 @@ public class BishopTest {
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new Bishop(PieceType.BISHOP, Player.WHITE, testCoords).canMove(board, testCoords2));
 
+    }
+
+    @Test
+    public void testBishopIllegalMove() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "c1";
+        Coordinates testCoords = new Coordinates(moveFrom);
+
         String moveTo2= "c4";
         Coordinates testCoords22 = new Coordinates(moveTo2);
         assertEquals(false, new Bishop(PieceType.KNIGHT, Player.WHITE, testCoords).canMove(board, testCoords22));
+    }
 
-        //Try stepping on a tile with a friendly piece on
+    @Test
+    public void testBishopMoveOnPiece() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "c1";
+        Coordinates testCoords = new Coordinates(moveFrom);
+
         String pieceBlock= "e3";
         Coordinates blockCoords = new Coordinates(pieceBlock);
         ChessPiece testPiece = new Bishop(PieceType.KNIGHT, Player.BLACK, blockCoords);
         board.addPiece(testPiece);
         assertEquals(false, new Bishop(PieceType.KNIGHT, Player.BLACK, testCoords).canMove(board, blockCoords));
+    }
 
-        //Try stepping on a tile with a piece blocking
+    @Test
+    public void testBishopMoveBlocked() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "c1";
+        String moveTo= "f4";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        Coordinates testCoords2 = new Coordinates(moveTo);
+
+        String pieceBlock= "e3";
+        Coordinates blockCoords = new Coordinates(pieceBlock);
+        ChessPiece testPiece = new Bishop(PieceType.KNIGHT, Player.BLACK, blockCoords);
+        board.addPiece(testPiece);
+
         assertEquals(false, new Rook(PieceType.ROOK, Player.BLACK, testCoords).canMove(board, testCoords2));
-
     }
 
 }

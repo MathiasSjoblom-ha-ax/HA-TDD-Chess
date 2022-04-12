@@ -31,19 +31,46 @@ public class RookTest {
         Coordinates testCoords = new Coordinates(moveFrom);
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new Rook(PieceType.ROOK, Player.WHITE, testCoords).canMove(board, testCoords2));
+    }
+
+    @Test
+    public void testRookIllegalMove() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "a4";
+        String moveTo= "h4";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        Coordinates testCoords2 = new Coordinates(moveTo);
 
         String moveTo2= "b3";
         Coordinates testCoords22 = new Coordinates(moveTo2);
         assertEquals(false, new Rook(PieceType.ROOK, Player.WHITE, testCoords).canMove(board, testCoords22));
+    }
 
-        //Try stepping on a tile with a friendly piece on
+    @Test
+    public void testRookMoveOnPiece() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "a4";
+        Coordinates testCoords = new Coordinates(moveFrom);
+
         String pieceBlock= "d4";
         Coordinates blockCoords = new Coordinates(pieceBlock);
         ChessPiece testPiece = new Rook(PieceType.ROOK, Player.BLACK, blockCoords);
         board.addPiece(testPiece);
         assertEquals(false, new Rook(PieceType.ROOK, Player.BLACK, testCoords).canMove(board, blockCoords));
+    }
 
-        //Try stepping on a tile with a piece blocking
+    @Test
+    public void testRookMoveBlocked() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "a4";
+        String moveTo= "h4";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        Coordinates testCoords2 = new Coordinates(moveTo);
+
+        String pieceBlock= "d4";
+        Coordinates blockCoords = new Coordinates(pieceBlock);
+        ChessPiece testPiece = new Rook(PieceType.ROOK, Player.BLACK, blockCoords);
+        board.addPiece(testPiece);
         assertEquals(false, new Rook(PieceType.ROOK, Player.BLACK, testCoords).canMove(board, testCoords2));
     }
 }

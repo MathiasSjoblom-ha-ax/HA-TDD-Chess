@@ -29,15 +29,32 @@ public class PawnTest {
         Coordinates testCoords = new Coordinates(moveFrom);
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new Pawn(PieceType.PAWN, Player.WHITE, testCoords).canMove(board, testCoords2));
+    }
+
+    @Test
+    public void testPawnIllegalMove() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "b2";
+        Coordinates testCoords = new Coordinates(moveFrom);
 
         String moveTo2= "c3";
         Coordinates testCoords22 = new Coordinates(moveTo2);
         assertEquals(false, new Pawn(PieceType.PAWN, Player.WHITE, testCoords).canMove(board, testCoords22));
 
-        //Try stepping on a tile with a friendly piece on
+    }
+
+    @Test
+    public void testPawnMoveOnPiece() {
+        Chessboard board = new Chessboard();
+        String moveFrom = "b2";
+        String moveTo= "b3";
+        Coordinates testCoords = new Coordinates(moveFrom);
+        Coordinates testCoords2 = new Coordinates(moveTo);
+
         ChessPiece testPiece = new Pawn(PieceType.PAWN, Player.BLACK, testCoords2);
         board.addPiece(testPiece);
         assertEquals(false, new Pawn(PieceType.PAWN, Player.BLACK, testCoords).canMove(board, testCoords2));
+
     }
 
 
