@@ -1,9 +1,6 @@
 package ax.ha.tdd.chess.engine;
 
-import ax.ha.tdd.chess.engine.pieces.ChessPiece;
-import ax.ha.tdd.chess.engine.pieces.PieceType;
-import ax.ha.tdd.chess.engine.pieces.Queen;
-import ax.ha.tdd.chess.engine.pieces.Rook;
+import ax.ha.tdd.chess.engine.pieces.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -61,14 +58,14 @@ public class QueenTest {
     @Test
     public void testQueenMoveBlocked() {
         Chessboard board = new Chessboard();
-        String moveFrom = "a4";
-        String moveTo= "h4";
+        String moveFrom = "d1";
+        String moveTo= "d3";
         Coordinates testCoords = new Coordinates(moveFrom);
         Coordinates testCoords2 = new Coordinates(moveTo);
 
-        String pieceBlock= "d4";
+        String pieceBlock= "d2";
         Coordinates blockCoords = new Coordinates(pieceBlock);
-        ChessPiece testPiece = new Queen(PieceType.QUEEN, Player.BLACK, blockCoords);
+        ChessPiece testPiece = new Pawn(PieceType.PAWN, Player.BLACK, blockCoords);
         board.addPiece(testPiece);
         assertEquals(false, new Queen(PieceType.QUEEN, Player.BLACK, testCoords).canMove(board, testCoords2));
     }

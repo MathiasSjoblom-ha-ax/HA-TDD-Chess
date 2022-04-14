@@ -5,7 +5,7 @@ import ax.ha.tdd.chess.engine.Coordinates;
 import ax.ha.tdd.chess.engine.Player;
 import static java.lang.Math.abs;
 
-public class Bishop  extends ChessPiece{
+public class Bishop extends ChessPiece{
 
     public Bishop(PieceType pieceType, Player player, Coordinates location) {
         super(pieceType, player, location);

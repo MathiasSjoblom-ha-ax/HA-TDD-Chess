@@ -25,7 +25,7 @@ public class Rook extends ChessPiece{
         }
 
         ChessPiece pieceCheck = chessboard.getPiece(destination);
-        if(pieceCheck != null && pieceCheck.getPlayer().getSymbol() == this.player.getSymbol()) {
+        if(pieceCheck != null && pieceCheck.getPlayer().getSymbol().equals(this.player.getSymbol())) {
             return notMoveable;
         }
 

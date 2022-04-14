@@ -4,14 +4,14 @@ import ax.ha.tdd.chess.engine.pieces.ChessPiece;
 import ax.ha.tdd.chess.engine.pieces.King;
 import ax.ha.tdd.chess.engine.pieces.PieceType;
 
+import java.util.Objects;
+
 public class Game {
 
     Chessboard board = Chessboard.startingBoard();
     String latestMove = "";
     String currentPlayerSymbol = "W";
     int round = 0;
-
-    //Feel free to delete this stuff. Just for initial testing.
     boolean isNewGame = true;
 
     public int roundCounter() {
@@ -67,31 +67,45 @@ public class Game {
 
         Coordinates fromCoords = new Coordinates(moveFrom);
         Coordinates tooCoords = new Coordinates(moveTo);
-        ChessPiece piece = board.getPiece(fromCoords);
-        ChessPiece destinationPiece = board.getPiece(fromCoords);
-        if(piece == null) {
+        ChessPiece fromPiece = board.getPiece(fromCoords);
+        ChessPiece destinationPiece = board.getPiece(tooCoords);
+        if(fromPiece == null) {
             latestMove = "Please input coordinates for a valid piece";
             isNewGame = false;
         }
-        if(piece.canMove(board, tooCoords) && piece.getPlayer().getSymbol().equals(currentPlayerSymbol)) {
-            if(destinationPiece.getPieceType() == PieceType.KING) {
-                board.removePiece(destinationPiece);
-                board.removePiece(piece);
-                piece.setLocation(tooCoords);
-                board.addPiece(piece);
-                latestMove = getPlayerToMove() + " Won!";
+
+        if(board.getPiece(fromCoords) != null) {
+            if(board.getPiece(fromCoords).getPlayer().getSymbol().equals(currentPlayerSymbol)) {
+                latestMove = "Cant move opponents pieces";
+                isNewGame = false;
+                return false;
+            }
+        }
+
+        if (fromPiece != null) {
+            if(fromPiece.canMove(getBoard(), tooCoords)) {
+                System.out.println(fromPiece.canMove(board, tooCoords));
+                if(destinationPiece != null && destinationPiece.getPieceType().equals(PieceType.KING)) {
+                    board.removePiece(destinationPiece);
+                    board.removePiece(fromPiece);
+                    fromPiece.setLocation(tooCoords);
+                    board.addPiece(fromPiece);
+                    latestMove = getPlayerToMove() + " Won!";
+                    isNewGame = false;
+                    return true;
+                }
+                if (destinationPiece != null) {
+                    board.removePiece(destinationPiece);
+                }
+                board.removePiece(fromPiece);
+                fromPiece.setLocation(tooCoords);
+                board.addPiece(fromPiece);
+                latestMove = "Player successfully moved " + move;
                 isNewGame = false;
                 return true;
+                } else {
+                latestMove = "Illegal move (" + move + ")";
             }
-            board.removePiece(destinationPiece);
-            board.removePiece(piece);
-            piece.setLocation(tooCoords);
-            board.addPiece(piece);
-            latestMove = "Player successfully moved " + move;
-            isNewGame = false;
-            return true;
-            } else {
-            latestMove = "Illegal move (" + move + ")";
         }
         isNewGame = false;
         return false;

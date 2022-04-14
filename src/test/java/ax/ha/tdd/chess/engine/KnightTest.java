@@ -36,10 +36,10 @@ public class KnightTest {
     public void testKnightIllegalMove() {
 
         Chessboard board = new Chessboard();
-        String moveFrom = "a3";
+        String moveFrom = "b1";
         Coordinates testCoords = new Coordinates(moveFrom);
 
-        String moveTo2= "a5";
+        String moveTo2= "b3";
         Coordinates testCoords22 = new Coordinates(moveTo2);
         assertEquals(false, new Knight(PieceType.KNIGHT, Player.WHITE, testCoords).canMove(board, testCoords22));
 

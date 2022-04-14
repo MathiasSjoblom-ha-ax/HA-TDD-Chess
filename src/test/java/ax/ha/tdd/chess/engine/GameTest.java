@@ -14,11 +14,6 @@ public class GameTest {
     }
 
     @Test
-    public void gameTestMove() {
-        assertEquals(true, new Game().move("a2-a3"));
-    }
-
-    @Test
     public void gameTestStateofGame() {
         Game game = new Game();
         assertEquals(Player.WHITE, new Game().getPlayerToMove());
