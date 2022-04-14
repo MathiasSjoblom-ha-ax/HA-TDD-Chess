@@ -32,9 +32,6 @@ public class QueenTest {
         Coordinates testCoords = new Coordinates(moveFrom);
         Coordinates testCoords2 = new Coordinates(moveTo);
         assertEquals(true, new Queen(PieceType.QUEEN, Player.WHITE, testCoords).canMove(board, testCoords2));
-
-        //Try stepping on a tile with a piece blocking
-        assertEquals(false, new Queen(PieceType.QUEEN, Player.BLACK, testCoords).canMove(board, testCoords2));
     }
 
     @Test

@@ -19,7 +19,6 @@ public class GameTest {
     public void gameTestStateofGame() {
         Game game = new Game();
         assertEquals(Player.WHITE, new Game().getPlayerToMove());
-        assertEquals(0, new Game().roundCounter());
-
+        assertEquals(1, new Game().roundCounter());
     }
 }
