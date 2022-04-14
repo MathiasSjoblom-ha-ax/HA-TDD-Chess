@@ -9,10 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class GameTest {
 
     @Test
+    public void gameTestIllegalMove() {
+        assertEquals(false, new Game().move("rgweg32f3f"));
+    }
+
+    @Test
     public void gameTestMove() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                new Game().move("2iu3b523ib5"));
-        assertEquals("Illegal input", exception.getMessage());
+        assertEquals(true, new Game().move("a2-a3"));
     }
 
     @Test

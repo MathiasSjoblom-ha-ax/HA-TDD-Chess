@@ -1,6 +1,8 @@
 package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.engine.pieces.ChessPiece;
+import ax.ha.tdd.chess.engine.pieces.King;
+import ax.ha.tdd.chess.engine.pieces.PieceType;
 
 public class Game {
 
@@ -40,13 +42,15 @@ public class Game {
         return latestMove;
     }
 
-    public void move(String move) {
+    public boolean move(String move) {
         //TODO this should trigger your move logic.
         if(latestMove.contains(" Won!")) {
-            return;
+            return false;
         }
-        if(move.length() > 5) {
-            throw new IllegalArgumentException("Illegal input");
+        if(move.length() > 5 || move.isEmpty()) {
+            latestMove = "Illegal move";
+            isNewGame = false;
+            return false;
         }
         String moveFrom = "";
         String moveTo = "";
@@ -64,22 +68,32 @@ public class Game {
         Coordinates fromCoords = new Coordinates(moveFrom);
         Coordinates tooCoords = new Coordinates(moveTo);
         ChessPiece piece = board.getPiece(fromCoords);
-        boolean moveable = piece.canMove(board, tooCoords);
-        if(piece.getPlayer().getSymbol().equals(currentPlayerSymbol)) {
-            if(moveable) {
-                if(board.getPiece(tooCoords).getSymbol().equals("KING")) {
-                    latestMove = getPlayerToMove().getSymbol() + " Won!";
-                }
-                System.out.println(moveable);
-                System.out.println(piece.getPlayer().getSymbol());
+        ChessPiece destinationPiece = board.getPiece(fromCoords);
+        if(piece == null) {
+            latestMove = "Please input coordinates for a valid piece";
+            isNewGame = false;
+        }
+        if(piece.canMove(board, tooCoords) && piece.getPlayer().getSymbol().equals(currentPlayerSymbol)) {
+            if(destinationPiece.getPieceType() == PieceType.KING) {
+                board.removePiece(destinationPiece);
                 board.removePiece(piece);
                 piece.setLocation(tooCoords);
                 board.addPiece(piece);
-                latestMove = "Player successfully moved " + move;
+                latestMove = getPlayerToMove() + " Won!";
+                isNewGame = false;
+                return true;
             }
-        } else {
-                latestMove = "Illegal move (" + move + ")";
+            board.removePiece(destinationPiece);
+            board.removePiece(piece);
+            piece.setLocation(tooCoords);
+            board.addPiece(piece);
+            latestMove = "Player successfully moved " + move;
+            isNewGame = false;
+            return true;
+            } else {
+            latestMove = "Illegal move (" + move + ")";
         }
         isNewGame = false;
+        return false;
     }
 }
