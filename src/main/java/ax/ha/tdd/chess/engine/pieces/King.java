@@ -18,8 +18,8 @@ public class King extends ChessPiece{
     @Override
     public boolean canMove(Chessboard chessboard, Coordinates destination) {
 
-        Boolean moveable = true;
-        Boolean notMoveable = false;
+        boolean moveable = true;
+        boolean notMoveable = false;
 
         if(destination == location) {
             return notMoveable;

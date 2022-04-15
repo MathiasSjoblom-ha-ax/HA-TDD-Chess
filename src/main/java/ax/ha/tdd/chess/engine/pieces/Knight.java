@@ -18,15 +18,15 @@ public class Knight extends ChessPiece{
     @Override
     public boolean canMove(Chessboard chessboard, Coordinates destination) {
 
-        Boolean moveable = true;
-        Boolean notMoveable = false;
+        boolean moveable = true;
+        boolean notMoveable = false;
 
-        if(destination == location) {
+        if(destination.equals(location)) {
             return notMoveable;
         }
 
         ChessPiece pieceCheck = chessboard.getPiece(destination);
-        if(pieceCheck != null && pieceCheck.getPlayer().getSymbol().equals(this.player.getSymbol())) {
+        if(pieceCheck != null && pieceCheck.getPlayer().equals(this.player)) {
             return notMoveable;
         }
 

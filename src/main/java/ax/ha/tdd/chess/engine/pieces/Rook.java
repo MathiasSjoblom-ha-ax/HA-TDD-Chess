@@ -18,7 +18,7 @@ public class Rook extends ChessPiece{
     @Override
     public boolean canMove(Chessboard chessboard, Coordinates destination) {
 
-        Boolean notMoveable = false;
+        boolean notMoveable = false;
 
         if(destination == location) {
             return notMoveable;

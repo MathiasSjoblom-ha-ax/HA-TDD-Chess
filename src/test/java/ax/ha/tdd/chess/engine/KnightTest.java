@@ -2,6 +2,7 @@ package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.engine.pieces.*;
 import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,7 +35,6 @@ public class KnightTest {
 
     @Test
     public void testKnightIllegalMove() {
-
         Chessboard board = new Chessboard();
         String moveFrom = "b1";
         Coordinates testCoords = new Coordinates(moveFrom);
@@ -46,15 +46,16 @@ public class KnightTest {
     }
 
     @Test
-    public void testKnightMoveOnPiece() {
+    public void testKnightMoveOnFriendlyPiece() {
         Chessboard board = new Chessboard();
-        String moveFrom = "a3";
+        String moveFrom = "b1";
         Coordinates testCoords = new Coordinates(moveFrom);
 
-        String pieceBlock= "b5";
+        String pieceBlock= "a3";
         Coordinates blockCoords = new Coordinates(pieceBlock);
-        ChessPiece testPiece = new Knight(PieceType.KNIGHT, Player.BLACK, blockCoords);
+        ChessPiece testPiece = new Pawn(PieceType.PAWN, Player.BLACK, blockCoords);
         board.addPiece(testPiece);
+        System.out.println(testPiece);
         assertEquals(false, new Knight(PieceType.KNIGHT, Player.BLACK, testCoords).canMove(board, blockCoords));
 
     }

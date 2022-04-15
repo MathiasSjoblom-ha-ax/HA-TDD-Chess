@@ -19,8 +19,8 @@ public class Bishop extends ChessPiece{
     @Override
     public boolean canMove(Chessboard chessboard, Coordinates destination) {
 
-        Boolean notMoveable = false;
-        Boolean moveable = true;
+        boolean notMoveable = false;
+        boolean moveable = true;
 
         if(destination == location) {
             return notMoveable;
